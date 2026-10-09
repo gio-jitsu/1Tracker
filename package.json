@@ -1,0 +1,10 @@
+{
+  "name": "gestionale-1nnovateam",
+  "version": "1.0.0",
+  "description": "Gestionale 1nnovaTeam: anagrafiche clienti e bandi, checklist",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=18" },
+  "githubRepo": "UTENTE/REPO",
+  "private": true
+}

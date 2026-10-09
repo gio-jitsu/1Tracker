@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guida – Gestionale 1nnovaTeam</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .guida h2 { margin-top: 28px; padding-top: 8px; border-top: 1px solid var(--line); }
+  .guida h3 { margin-top: 18px; font-size: 16px; }
+  .guida ol, .guida ul { padding-left: 22px; margin: 8px 0 12px; }
+  .guida li { margin-bottom: 4px; }
+  .guida .indice { background: var(--tint); border: 1px solid var(--line); border-radius: 10px; padding: 12px 16px; }
+  .guida .indice ol { margin: 0; columns: 2; }
+  .guida .nota { background: var(--tint); border-left: 4px solid var(--orange); border-radius: 6px; padding: 8px 12px; margin: 12px 0; }
+  .guida .attenzione { background: #fdecea; border-left: 4px solid var(--red); border-radius: 6px; padding: 8px 12px; margin: 12px 0; }
+  .guida code { background: var(--bg); border: 1px solid var(--line); border-radius: 4px; padding: 0 5px; }
+  .guida table { margin: 8px 0 12px; }
+  .guida td, .guida th { cursor: default; vertical-align: top; }
+  .guida tbody tr:hover { background: none; cursor: default; }
+  .guida .pulsante { display: inline-block; padding: 0 8px; border-radius: 6px; font-size: 13px; font-weight: bold; color: #fff; background: var(--orange); }
+  .guida .pulsante.rosso { background: var(--red); color: #fff; }
+  @media (max-width: 900px) { .guida .indice ol { columns: 1; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><img src="logo.png" alt="1nnovaTeam"></header>
+  <div class="card guida" style="margin-top:16px">
+    <h1>Guida all'uso del Gestionale 1nnovaTeam</h1>
+    <p>Il gestionale serve a tenere in un unico posto i <b>clienti</b>, i <b>bandi</b> a cui possono partecipare e,
+    soprattutto, la <b>checklist di ogni pratica</b>: per ogni cliente e per ogni bando sai sempre quali passi sono stati fatti e quali mancano.</p>
+
+    <div class="indice">
+      <b>In questa guida</b>
+      <ol>
+        <li><a href="#avvio">Avviare e spegnere l'applicazione</a></li>
+        <li><a href="#panoramica">Come è organizzata</a></li>
+        <li><a href="#inizio">Primo utilizzo: i quattro passi</a></li>
+        <li><a href="#clienti">Scheda Clienti</a></li>
+        <li><a href="#bandi">Scheda Bandi</a></li>
+        <li><a href="#pratiche">Scheda Pratiche</a></li>
+        <li><a href="#checklist">Scheda Checklist</a></li>
+        <li><a href="#innovazione">Bando Innovazione 2026</a></li>
+        <li><a href="#dati">Dati, backup e importazione</a></li>
+        <li><a href="#problemi">Domande frequenti e problemi</a></li>
+      </ol>
+    </div>
+
+    <h2 id="avvio">1. Avviare e spegnere l'applicazione</h2>
+    <h3>Avvio</h3>
+    <ol>
+      <li>Fai doppio clic sul file <code>avvia.bat</code>, nella cartella dell'app.</li>
+      <li>Non compare nessuna finestra nera: dopo un istante si apre il browser sull'indirizzo <code>http://127.0.0.1:3000</code>.</li>
+      <li>Se il browser si chiude per errore, basta rilanciare <code>avvia.bat</code>: se l'app è già attiva non viene duplicata, si riapre solo la pagina.</li>
+    </ol>
+    <h3>Spegnimento</h3>
+    <p>In fondo a ogni pagina c'è il pulsante rosso <span class="pulsante rosso">Spegni</span>. Un clic e l'applicazione si ferma, dopo aver completato eventuali salvataggi.
+    Compare il messaggio «Server spento»: a quel punto puoi chiudere la scheda del browser. Per riaccenderla, rilancia <code>avvia.bat</code>.</p>
+    <div class="nota">I dati vengono salvati a ogni modifica: non esiste un pulsante «Salva» generale e non si perde nulla spegnendo l'app.</div>
+
+    <h2 id="panoramica">2. Come è organizzata</h2>
+    <p>In alto ci sono quattro schede. Cliccando su una scheda si passa da una sezione all'altra senza ricaricare la pagina.</p>
+    <table>
+      <thead><tr><th>Scheda</th><th>A cosa serve</th></tr></thead>
+      <tbody>
+        <tr><td><b>Clienti</b></td><td>L'anagrafica delle aziende che segui (dati, referente, contatti).</td></tr>
+        <tr><td><b>Bandi</b></td><td>L'elenco dei bandi, con scadenza, stato, percentuale di contributo e i <i>passi standard</i> da seguire.</td></tr>
+        <tr><td><b>Pratiche</b></td><td>L'abbinamento <i>cliente + bando</i>. Ogni pratica ha la sua checklist con la barra di avanzamento.</td></tr>
+        <tr><td><b>Checklist</b></td><td>Un elenco libero di attività da fare (promemoria generici, anche non legati a una pratica).</td></tr>
+      </tbody>
+    </table>
+    <p>Le finestre di modifica si chiudono con <b>Annulla</b> o con il tasto <kbd>Esc</kbd>. Eventuali errori compaiono in un riquadro rosso sopra il contenuto.</p>
+
+    <h2 id="inizio">3. Primo utilizzo: i quattro passi</h2>
+    <p>Per vedere la checklist di un cliente su un bando:</p>
+    <ol>
+      <li><b>Clienti</b> → <span class="pulsante">+ Nuovo</span>: inserisci almeno la ragione sociale e salva.</li>
+      <li><b>Bandi</b>: controlla che il bando che ti interessa sia presente (il «Bando Innovazione 2026» è già inserito).</li>
+      <li><b>Pratiche</b> → <span class="pulsante">+ Nuova pratica</span>: scegli il cliente e il bando, poi <b>Crea</b>.</li>
+      <li>Si apre la checklist di quella pratica: spunta i passi man mano che li completi.</li>
+    </ol>
+
+    <h2 id="clienti">4. Scheda Clienti</h2>
+    <ul>
+      <li><b>Cercare</b>: scrivi nel campo «Cerca…». L'elenco si filtra subito su tutti i campi di testo (nome, P.IVA, referente, email…).</li>
+      <li><b>Ordinare</b>: clicca sull'intestazione di una colonna; un secondo clic inverte l'ordine (▲ / ▼).</li>
+      <li><b>Aggiungere</b>: <span class="pulsante">+ Nuovo</span>, compila i campi, <b>Salva</b>. Solo la <b>ragione sociale</b> è obbligatoria.</li>
+      <li><b>Modificare</b>: clicca sulla riga del cliente, cambia i dati e salva.</li>
+      <li><b>Eliminare</b>: apri il cliente e premi <b>Elimina</b>.</li>
+    </ul>
+    <table>
+      <thead><tr><th>Campo</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td>Partita IVA</td><td>11 cifre. Se esiste già un cliente con la stessa partita IVA compare un avviso arancione.</td></tr>
+        <tr><td>Dimensione</td><td>Micro, piccola o media impresa: è utile per calcolare percentuale e importi del contributo.</td></tr>
+        <tr><td>Referente, email, telefono, indirizzo</td><td>Contatti della persona con cui lavori.</td></tr>
+        <tr><td>Note</td><td>Testo libero.</td></tr>
+      </tbody>
+    </table>
+    <div class="attenzione"><b>Attenzione:</b> eliminando un cliente vengono eliminate anche <b>tutte le sue pratiche</b> con le relative checklist.
+    L'app chiede sempre conferma e indica quante pratiche verranno cancellate.</div>
+
+    <h2 id="bandi">5. Scheda Bandi</h2>
+    <p>Funziona come la scheda Clienti (cerca, ordina, aggiungi, modifica, elimina). Per ogni bando puoi indicare:</p>
+    <table>
+      <thead><tr><th>Campo</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td>Nome, ente erogatore</td><td>Il nome è obbligatorio.</td></tr>
+        <tr><td>Scadenza</td><td>Diventa <span class="rosso">rossa</span> se è già passata e <span class="arancio">arancione</span> se il bando è «aperto» e scade entro 14 giorni.</td></tr>
+        <tr><td>Stato</td><td><i>Aperto</i>, <i>in arrivo</i> o <i>chiuso</i>.</td></tr>
+        <tr><td>Percentuale contributo, dotazione</td><td>Valori numerici (la dotazione in euro).</td></tr>
+        <tr><td>Link, note</td><td>Il link alla pagina ufficiale del bando; le note sono testo libero.</td></tr>
+        <tr><td><b>Passi standard della pratica</b></td><td>Un passo per riga: è il <b>modello</b> della checklist. Viene copiato in ogni nuova pratica di quel bando.</td></tr>
+      </tbody>
+    </table>
+    <div class="nota"><b>Se modifichi il modello</b> di un bando, le pratiche già create non cambiano da sole. Per aggiungere i passi nuovi a una pratica esistente, aprila e premi
+    <b>Aggiungi dal modello (N)</b>: vengono aggiunti solo quelli mancanti.</div>
+    <div class="attenzione"><b>Attenzione:</b> eliminando un bando vengono eliminate anche le pratiche collegate. Le attività della scheda Checklist restano, ma perdono il collegamento al bando.</div>
+
+    <h2 id="pratiche">6. Scheda Pratiche</h2>
+    <p>È la scheda principale di lavoro. Ogni riga è una pratica, cioè un cliente su un bando, con scadenza del bando e avanzamento (barra e conteggio, ad esempio «12/35»).
+    Esiste <b>una sola pratica per ogni coppia cliente + bando</b>, e ogni pratica ha la propria checklist indipendente dalle altre.</p>
+    <h3>Creare una pratica</h3>
+    <ol>
+      <li>Premi <span class="pulsante">+ Nuova pratica</span>.</li>
+      <li>Scegli il <b>cliente</b> e il <b>bando</b>.</li>
+      <li>Premi <b>Crea</b>: i passi vengono copiati dal modello del bando e la pratica si apre subito.</li>
+    </ol>
+    <h3>Lavorare sulla checklist</h3>
+    <ul>
+      <li><b>Spuntare</b> un passo: clicca la casella. Il passo diventa grigio e barrato e l'avanzamento si aggiorna; il salvataggio è immediato.</li>
+      <li><b>Aggiungere</b> un passo solo per questo cliente: scrivi nel campo «Nuovo passo» e premi <kbd>Invio</kbd>.</li>
+      <li><b>Rimuovere</b> un passo (ad esempio non applicabile): clicca la <b>×</b> a destra.</li>
+      <li><b>Aggiungere dal modello</b>: compare solo se nel modello del bando ci sono passi non ancora presenti nella pratica.</li>
+      <li><b>Chiudere</b> la finestra con <b>Chiudi</b>: non serve salvare.</li>
+    </ul>
+    <h3>Ritrovare una pratica</h3>
+    <p>Usa i due menu in alto per filtrare per <b>cliente</b> e/o per <b>bando</b>, poi clicca sulla riga per riaprirla. L'elenco è ordinato per cliente.</p>
+    <div class="attenzione"><b>Attenzione:</b> <b>Elimina pratica</b> cancella la checklist e tutte le spunte. L'app chiede conferma.</div>
+
+    <h2 id="checklist">7. Scheda Checklist</h2>
+    <p>Un elenco di attività libere, utile per promemoria che non rientrano in una pratica (una telefonata, un documento da richiedere…).</p>
+    <ul>
+      <li><b>Aggiungere in fretta</b>: scrivi nel campo «Nuova attività» e premi <kbd>Invio</kbd>.</li>
+      <li><b>Aggiungere con dettagli</b>: premi il pulsante <b>+</b> accanto al campo (scadenza, priorità, cliente, bando, note).</li>
+      <li><b>Segnare come fatta</b>: spunta la casella.</li>
+      <li><b>Modificare o eliminare</b>: clicca l'icona ✎ a destra della voce.</li>
+      <li><b>Filtrare</b>: Tutte / Da fare / Fatte, per cliente, per bando, oppure con la ricerca testuale.</li>
+      <li>In alto il contatore «N da fare · M scadute». Le scadute hanno la data in <span class="rosso">rosso</span>.</li>
+      <li>Cliccando sull'etichetta del cliente o del bando si apre la relativa scheda di modifica.</li>
+    </ul>
+    <p>L'ordine è automatico: prima le attività da fare, poi per scadenza (la più vicina in alto), poi per priorità (alta in cima).</p>
+    <div class="nota"><b>Differenza tra Pratiche e Checklist:</b> le Pratiche servono per seguire un bando passo per passo per un cliente; la Checklist è un elenco libero di cose da ricordare.</div>
+
+    <h2 id="innovazione">8. Bando Innovazione 2026</h2>
+    <p>Nell'app è già inserito il <b>Bando Innovazione 2026</b> della Regione Piemonte (Voucher digitalizzazione PMI 2026, gestito da Unioncamere Piemonte), con una checklist di <b>35 passi</b> divisi in cinque gruppi, riconoscibili dalla lettera iniziale:</p>
+    <table>
+      <thead><tr><th>Gruppo</th><th>Cosa contiene</th></tr></thead>
+      <tbody>
+        <tr><td><b>A · Requisiti</b></td><td>Verifiche da fare prima di partire: dimensione dell'impresa, sede in Piemonte, codice ATECO, DURC, diritto camerale, assenza di contributi dai voucher 2023 e 2024, antimafia, polizze catastrofali.</td></tr>
+        <tr><td><b>B · Progetto</b></td><td>Impostazione: tecnologia ammissibile, limite del 30% per consulenza e formazione, importo minimo, fornitori ammissibili e senza legami societari, premialità.</td></tr>
+        <tr><td><b>C · Documenti</b></td><td>Allegati da predisporre sulla piattaforma ReStart (Allegato A con marca da bollo, Modello Riepilogativo, Allegato B, SELFI4.0, DNSH…), tutti firmati digitalmente in formato .p7m. Alcuni valgono solo in certi casi (Allegati C, D, F, G).</td></tr>
+        <tr><td><b>D · Invio</b></td><td>Precaricamento e invio della domanda, e annotazione del codice domanda.</td></tr>
+        <tr><td><b>E · Rendicontazione</b></td><td>Dopo la concessione: CUP sulle fatture, pagamenti tracciabili, rendicontazione entro 6 mesi, almeno il 70% di investimento realizzato, obblighi di conservazione.</td></tr>
+      </tbody>
+    </table>
+    <h3>Date da ricordare</h3>
+    <ul>
+      <li><b>Dal 12 ottobre 2026, ore 11:00</b>: precaricamento della documentazione.</li>
+      <li><b>Dal 22 ottobre 2026, ore 11:00</b>: apertura dell'invio formale della domanda.</li>
+      <li><b>15 dicembre 2026, ore 16:00</b>: chiusura dell'invio. È la scadenza registrata nell'app.</li>
+    </ul>
+    <h3>Riferimenti utili</h3>
+    <ul>
+      <li>Piattaforma di invio: <a href="https://restart.infocamere.it" target="_blank" rel="noopener" style="color:var(--accent)">restart.infocamere.it</a></li>
+      <li>Quesiti e FAQ: <a href="https://pie.camcom.it/amministrazione-trasparente/avvisi-gare-e-contratti/bandi-contributi" target="_blank" rel="noopener" style="color:var(--accent)">pagina bandi di Unioncamere Piemonte</a></li>
+      <li>E-mail: <code>bando.voucher@pie.camcom.it</code> · PEC: <code>bandiunioncamerepiemonte@legalmail.it</code></li>
+    </ul>
+    <div class="nota">La checklist è un <b>promemoria pratico</b> e non sostituisce la lettura del bando e degli allegati ufficiali: in caso di dubbi fa fede il testo ufficiale.
+    Percentuale di contributo e dotazione non sono presenti nel documento di riferimento: vanno inseriti a mano nella scheda Bandi.</div>
+
+    <h2 id="dati">9. Dati, backup e importazione</h2>
+    <h3>Dove sono i dati</h3>
+    <p>Tutto è salvato nel file <code>data.json</code>, nella cartella dell'app accanto a <code>server.js</code>. Non c'è nessun servizio online: i dati restano sul computer.</p>
+    <h3>Backup</h3>
+    <ul>
+      <li><b>Consigliato</b>: copia ogni tanto <code>data.json</code> in un posto sicuro (chiavetta, cloud aziendale), oppure usa <b>Esporta JSON</b>.</li>
+      <li>L'app tiene anche <code>data.backup.json</code>: l'ultima versione valida prima dell'ultima modifica.</li>
+    </ul>
+    <h3>Esporta e importa</h3>
+    <ul>
+      <li><b>Esporta JSON</b> (in fondo alla pagina): scarica una copia completa dei dati.</li>
+      <li><b>Importa JSON</b>: sostituisce <u>tutti</u> i dati attuali con quelli di un file. L'app chiede conferma e crea prima un backup.</li>
+    </ul>
+    <h3>Ripristinare i dati</h3>
+    <ol>
+      <li>Spegni l'app con <span class="pulsante rosso">Spegni</span>.</li>
+      <li>Copia <code>data.backup.json</code> sopra <code>data.json</code> (oppure un tuo backup precedente).</li>
+      <li>Riavvia con <code>avvia.bat</code>.</li>
+    </ol>
+
+    <h2 id="problemi">10. Domande frequenti e problemi</h2>
+    <h3>Il browser mostra «Server non raggiungibile»</h3>
+    <p>L'app è spenta. Lancia <code>avvia.bat</code> e ricarica la pagina.</p>
+    <h3>Faccio doppio clic su avvia.bat ma non succede niente</h3>
+    <p>All'avvio il programma controlla da solo che sul computer ci sia <b>Node.js</b> (versione 18 o successiva). Se manca o è troppo vecchio compare un avviso e si apre la pagina di download:
+    installa la versione <b>LTS</b> da nodejs.org e rilancia <code>avvia.bat</code>. Compare un avviso anche se il server non riesce a partire (ad esempio perché la porta 3000 è già usata da un altro programma).</p>
+    <p>Per controllare a mano: premi <kbd>Windows</kbd>+<kbd>R</kbd>, scrivi <code>cmd</code>, poi digita <code>node -v</code> e premi Invio. Se compare un numero come <code>v22.x.x</code> Node.js è installato; se compare «comando non riconosciuto» non lo è.</p>
+    <h3>Compare un riquadro rosso con un errore</h3>
+    <p>Leggi il messaggio: di solito indica un campo mancante o non valido (ad esempio una partita IVA che non è di 11 cifre) o l'esistenza di una pratica già presente per quel cliente e bando.</p>
+    <h3>Il messaggio dice che <code>data.json</code> è illeggibile</h3>
+    <p>Segui la procedura di ripristino del paragrafo 9.</p>
+    <h3>Ho eliminato qualcosa per sbaglio</h3>
+    <p>Spegni subito l'app e ripristina l'ultimo backup (<code>data.backup.json</code> contiene la versione precedente all'ultima modifica). Più passa il tempo, più è probabile che il backup venga sovrascritto da nuove modifiche.</p>
+    <h3>Posso usare l'app dal telefono?</h3>
+    <p>L'interfaccia si adatta agli schermi piccoli, ma per impostazione predefinita l'app è raggiungibile solo dal computer su cui è installata.</p>
+    <h3>Cosa succede se la usano due persone insieme?</h3>
+    <p>L'app è pensata per un utente alla volta. Se ne usi più d'uno, ricaricare la pagina (<kbd>F5</kbd>) per vedere le modifiche fatte da altri.</p>
+
+    <p style="margin-top:24px"><a href="./" style="color:var(--accent)">← Torna al gestionale</a></p>
+  </div>
+</div>
+</body>
+</html>

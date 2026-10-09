@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gestionale 1nnovaTeam</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header><img src="logo.png" alt="1nnovaTeam"></header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab" data-tab="clienti">Clienti</button>
+    <button class="tab" data-tab="bandi">Bandi</button>
+    <button class="tab" data-tab="checklist">Checklist</button>
+    <button class="tab" data-tab="pratiche">Pratiche</button>
+  </nav>
+
+  <div id="errore" class="err" role="alert" hidden></div>
+
+  <main class="card" id="main"><div class="loading">Caricamento…</div></main>
+
+  <footer>
+    <div>1nnovaTeam · Finanza agevolata, innovazione e crescita d'impresa · <a href="guida.html" target="_blank">Guida</a></div>
+    <div class="mail">info@1nnovateam.it</div>
+    <div class="tools">
+      <button class="btn2" id="esporta">Esporta JSON</button>
+      <button class="btn2" id="importa">Importa JSON</button>
+      <button class="btn2" id="aggiorna" title="Scarica l'ultima versione da GitHub">Aggiorna app</button>
+      <button class="btn-danger" id="spegni" title="Ferma il server">Spegni</button>
+      <input type="file" id="fileImport" accept="application/json,.json" hidden>
+    </div>
+  </footer>
+</div>
+
+<dialog id="dlg"></dialog>
+<script src="app.js"></script>
+</body>
+</html>
