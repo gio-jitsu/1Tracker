@@ -216,8 +216,8 @@ async function scaricaAggiornamento() {
   try {
     const zip = path.join(tmp, 'a.zip');
     fs.writeFileSync(zip, Buffer.from(await z.arrayBuffer()));
-    await new Promise((ok, ko) => execFile('powershell', ['-NoProfile', '-Command', 'Expand-Archive -LiteralPath $args[0] -DestinationPath $args[1] -Force', zip, path.join(tmp, 'x')],
-      { timeout: 120000 }, (err, _o, se) => err ? ko(new Error('Estrazione fallita: ' + (se || err.message).trim())) : ok()));
+    await new Promise((ok, ko) => execFile('powershell', ['-NoProfile', '-Command', 'Expand-Archive -LiteralPath $env:AGG_ZIP -DestinationPath $env:AGG_DEST -Force'],
+      { timeout: 120000, env: Object.assign({}, process.env, { AGG_ZIP: zip, AGG_DEST: path.join(tmp, 'x') }) }, (err, _o, se) => err ? ko(new Error('Estrazione fallita: ' + (se || err.message).trim())) : ok()));
     const radice = path.join(tmp, 'x', fs.readdirSync(path.join(tmp, 'x'))[0]);
     for (const nome of fs.readdirSync(radice)) {
       if (NON_TOCCARE.has(nome)) continue;

@@ -5,6 +5,6 @@
   "main": "server.js",
   "scripts": { "start": "node server.js" },
   "engines": { "node": ">=18" },
-  "githubRepo": "UTENTE/REPO",
+  "githubRepo": "gio-jitsu/1Tracker",
   "private": true
 }
